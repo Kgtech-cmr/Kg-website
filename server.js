@@ -14,9 +14,9 @@ app.use(express.static(join(__dirname, "public")));
 app.get("/api", (req, res) => {
 	const cpus = os.cpus();
 	const serverInfo = {
-		name: "fx-web",
+		name: "kgtech-web",
 		version: "1.0.0",
-		description: "Server FxopMD Bot",
+		description: "Server KERM Bot",
 		nodeVersion: nodeVersion,
 		platform: os.platform(),
 		osRelease: os.release(),
