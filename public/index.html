@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FX-MD</title>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+		<style>
+			:root {
+				--primary-color: #1a1a1a;
+				--secondary-color: #333333;
+				--background-color: #121212;
+				--surface-color: #1e1e1e;
+				--text-color: #ffffff;
+				--text-secondary-color: #cccccc;
+				--accent-color: #4caf50;
+			}
+			body {
+				background-color: var(--background-color);
+				color: var(--text-color);
+				font-family: "Fira Sans", sans-serif;
+			}
+			.navbar {
+				background-color: var(--primary-color);
+			}
+			.box {
+				background-color: var(--surface-color);
+				border-radius: 15px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+				transition: all 0.3s ease;
+				overflow: hidden;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			.box:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+			}
+			.box-header {
+				background-color: var(--primary-color);
+				color: var(--text-color);
+				padding: 20px;
+			}
+			.box-content {
+				padding: 20px;
+				color: var(--text-secondary-color);
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.btn-custom {
+				background-color: var(--accent-color);
+				color: var(--text-color);
+				border: none;
+				transition: all 0.3s ease;
+				align-self: flex-start;
+				margin-top: auto;
+			}
+			.btn-custom:hover {
+				background-color: #45a049;
+				color: var(--text-color);
+				transform: scale(1.05);
+			}
+			.section-content {
+				opacity: 0;
+				transform: translateY(20px);
+				transition: all 0.5s ease;
+			}
+			.section-content.show {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			.fade-in {
+				animation: fadeIn 0.5s ease forwards;
+			}
+			.list-group-item {
+				background-color: var(--surface-color);
+				color: var(--text-secondary-color);
+				border-color: var(--primary-color);
+			}
+			.accordion-button {
+				background-color: var(--surface-color);
+				color: var(--text-color);
+			}
+			.accordion-button:not(.collapsed) {
+				background-color: var(--primary-color);
+				color: var(--text-color);
+			}
+			.accordion-body {
+				background-color: var(--surface-color);
+				color: var(--text-secondary-color);
+			}
+			.iframe-container {
+				background-color: var(--surface-color);
+				border: 1px solid var(--primary-color);
+			}
+			.alert-info {
+				background-color: var(--surface-color);
+				color: var(--text-secondary-color);
+				border-color: var(--accent-color);
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#"><i class="fab fa-whatsapp me-2"></i>FX DASHBOARD</a>
+			</div>
+		</nav>
+
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-md-4 mb-4 fade-in" style="animation-delay: 0.1s">
+					<div class="box">
+						<div class="box-header">
+							<h3><i class="fas fa-key me-2"></i>Get Session ID</h3>
+						</div>
+						<div class="box-content">
+							<p>Retrieve your unique session ID for the WhatsApp bot.</p>
+							<button class="btn btn-custom scroll-btn" data-target="section1">Get ID</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-4 fade-in" style="animation-delay: 0.2s">
+					<div class="box">
+						<div class="box-header">
+							<h3><i class="fas fa-book me-2"></i>FXOP Tutorials</h3>
+						</div>
+						<div class="box-content">
+							<p>Access comprehensive tutorials for FXOP features.</p>
+							<button class="btn btn-custom scroll-btn" data-target="section2">View Tutorials</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-4 fade-in" style="animation-delay: 0.3s">
+					<div class="box">
+						<div class="box-header">
+							<h3><i class="fas fa-headset me-2"></i>FXOP Support</h3>
+						</div>
+						<div class="box-content">
+							<p>Get help and support for any FXOP-related issues.</p>
+							<button class="btn btn-custom scroll-btn" data-target="section3">Contact Support</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="content" class="mt-5">
+				<section id="section1" class="mb-5 section-content">
+					<h2><i class="fas fa-key me-2"></i>Get Session ID</h2>
+					<p>Use the iframe below to get your session ID:</p>
+					<div class="iframe-container mt-3" style="height: 400px; border-radius: 10px; overflow: hidden">
+						<iframe src="https://salty-heida-higherlifemedia-5b7121f0.koyeb.app/code" width="100%" height="100%" style="border: none"></iframe>
+					</div>
+					<div class="alert alert-info mt-3" role="alert">If the iframe above shows a 404 error, it means the service is currently inactive. Please try again later or contact support.</div>
+				</section>
+				<section id="section2" class="mb-5 section-content">
+					<h2><i class="fas fa-book me-2"></i>FXOP Tutorials</h2>
+					<p>Explore our comprehensive tutorials to master FXOP features:</p>
+					<div class="accordion" id="tutorialAccordion">
+						<!-- Existing Sections -->
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-video me-2"></i>Getting Started with FXOP</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#tutorialAccordion">
+								<div class="accordion-body">
+									<ul>
+										<li>Introduction to FXOP</li>
+										<li>Setting up your account</li>
+										<li>Navigating the dashboard</li>
+										<li>Your first trade with FXOP</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- New WhatsApp Bot Section with commands -->
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingWhatsApp">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWhatsApp" aria-expanded="false" aria-controls="collapseWhatsApp"><i class="fas fa-comments me-2"></i>WhatsApp Bot Commands</button>
+							</h2>
+							<div id="collapseWhatsApp" class="accordion-collapse collapse" aria-labelledby="headingWhatsApp" data-bs-parent="#tutorialAccordion">
+								<div class="accordion-body">
+									<h4>Overview of FXOPRISA MD WhatsApp Bot</h4>
+									<p>FXOPRISA MD is a powerful WhatsApp bot with over 140+ plugins, designed to automate tasks, provide information, and enhance user engagement. Below is a breakdown of its commands and features:</p>
+
+									<!-- CONVERTER -->
+									<h5><strong>Converter Commands</strong></h5>
+									<ul>
+										<li><strong>FANCY</strong> - Create fancy text</li>
+										<li><strong>IMG</strong> - Convert media to image</li>
+										<li><strong>MP3</strong> - Convert media to audio</li>
+										<li><strong>MP4</strong> - Convert media to video</li>
+										<li><strong>PHOTO</strong> - Take a screenshot or capture an image</li>
+										<li><strong>STICKER</strong> - Create a WhatsApp sticker</li>
+										<li><strong>TAKE</strong> - Take or download content</li>
+									</ul>
+
+									<!-- DOWNLOAD -->
+									<h5><strong>Download Commands</strong></h5>
+									<ul>
+										<li><strong>APK</strong> - Download APK files</li>
+										<li><strong>FB</strong> - Download Facebook videos</li>
+										<li><strong>INSTA</strong> - Download Instagram media</li>
+										<li><strong>MEDIAFIRE</strong> - Download from Mediafire</li>
+										<li><strong>PLAY</strong> - Download from Google Play</li>
+										<li><strong>SPOTIFY</strong> - Download music from Spotify</li>
+										<li><strong>TWITTER</strong> - Download Twitter videos</li>
+										<li><strong>VIDEO</strong> - Download video content</li>
+										<li><strong>YTA</strong> - YouTube audio download</li>
+										<li><strong>YTV</strong> - YouTube video download</li>
+									</ul>
+
+									<!-- FX AI -->
+									<h5><strong>FX AI Commands</strong></h5>
+									<ul>
+										<li><strong>ANIMEGEN</strong> - Generate anime-related content</li>
+										<li><strong>AOYO</strong> - AI-powered image generation</li>
+										<li><strong>BINGAI</strong> - Microsoft Bing AI integration</li>
+										<li><strong>BLACKBOX</strong> - AI-powered code generation</li>
+										<li><strong>DALLE</strong> - Generate images using DALL-E</li>
+										<li><strong>ENHANCE</strong> - Enhance image quality</li>
+										<li><strong>GPT</strong> - Chat with OpenAI's GPT</li>
+										<li><strong>GPT2</strong> - Use OpenAI's GPT-2 for text generation</li>
+									</ul>
+
+									<!-- GROUP -->
+									<h5><strong>Group Management Commands</strong></h5>
+									<ul>
+										<li><strong>ACCEPT</strong> - Accept group invitations</li>
+										<li><strong>ADD</strong> - Add a user to the group</li>
+										<li><strong>ADMINS</strong> - Manage group admins</li>
+										<li><strong>ANTIBOT</strong> - Enable anti-bot protection</li>
+										<li><strong>ANTILINK</strong> - Prevent users from posting links</li>
+										<li><strong>ANTIDEMOTE</strong> - Prevent users from demoting others</li>
+										<li><strong>ANTIPROMOTE</strong> - Prevent users from promoting others</li>
+										<li><strong>COMMON</strong> - Manage common group settings</li>
+										<li><strong>DEL</strong> - Delete a message</li>
+										<li><strong>DEMOTE</strong> - Demote a user from admin</li>
+										<li><strong>DIFF</strong> - Show differences between group versions</li>
+										<li><strong>GDESC</strong> - Set group description</li>
+										<li><strong>GINFO</strong> - Display group information</li>
+										<li><strong>GJID</strong> - Get group JID</li>
+										<li><strong>GNAME</strong> - Set group name</li>
+										<li><strong>GOODBYE</strong> - Set goodbye messages for members leaving</li>
+										<li><strong>GPP</strong> - Set group profile picture</li>
+										<li><strong>INVITE</strong> - Invite a user to the group</li>
+										<li><strong>KICK</strong> - Remove a user from the group</li>
+										<li><strong>LEAVE</strong> - Leave the group</li>
+										<li><strong>MUTE</strong> - Mute the group</li>
+										<li><strong>PROMOTE</strong> - Promote a user to admin</li>
+										<li><strong>REJECT</strong> - Reject group invitation</li>
+										<li><strong>REQUESTS</strong> - View pending group requests</li>
+										<li><strong>TAG</strong> - Tag a user</li>
+										<li><strong>TAGALL</strong> - Tag all group members</li>
+										<li><strong>UNMUTE</strong> - Unmute the group</li>
+										<li><strong>VOTE</strong> - Create a voting poll</li>
+										<li><strong>WELCOME</strong> - Set welcome messages for new members</li>
+									</ul>
+
+									<!-- SYSTEM -->
+									<h5><strong>System Commands</strong></h5>
+									<ul>
+										<li><strong>CHECKUPDATES</strong> - Check for new updates</li>
+										<li><strong>CPU</strong> - Display system CPU usage</li>
+										<li><strong>DISABLE</strong> - Disable a plugin or feature</li>
+										<li><strong>ENABLE</strong> - Enable a plugin or feature</li>
+										<li><strong>FXOP</strong> - Manage FXOP bot operations</li>
+										<li><strong>INSTALL</strong> - Install new plugins or features</li>
+										<li><strong>LOGOUT</strong> - Logout the bot</li>
+										<li><strong>PATCH</strong> - Apply patches to the bot</li>
+										<li><strong>PING</strong> - Check the bot's response time</li>
+										<li><strong>PLUGIN</strong> - Manage bot plugins</li>
+										<li><strong>REMOVE</strong> - Remove a plugin or feature</li>
+										<li><strong>RESTART</strong> - Restart the bot</li>
+										<li><strong>RUNTIME</strong> - Display the bot's runtime</li>
+										<li><strong>SHUTDOWN</strong> - Shut down the bot</li>
+										<li><strong>UPDATE</strong> - Update the bot to the latest version</li>
+									</ul>
+
+									<!-- TOOLS -->
+									<h5><strong>Tools Commands</strong></h5>
+									<ul>
+										<li><strong>BITLY</strong> - Shorten a URL using Bit.ly</li>
+										<li><strong>FULLSS</strong> - Capture a full-page screenshot</li>
+										<li><strong>QR</strong> - Generate a QR code</li>
+										<li><strong>RMBG</strong> - Remove background from an image</li>
+										<li><strong>SHORTLINK</strong> - Shorten a URL using another service</li>
+										<li><strong>TIME</strong> - Display the current time</li>
+										<li><strong>TINYURL</strong> - Shorten a URL using TinyURL</li>
+										<li><strong>TRIM</strong> - Trim a video or audio file</li>
+										<li><strong>UPLOAD</strong> - Upload media or files</li>
+										<li><strong>WM</strong> - Add a watermark to an image</li>
+									</ul>
+
+									<!-- WHATSAPP -->
+									<h5><strong>WhatsApp Commands</strong></h5>
+									<ul>
+										<li><strong>ARCHIVE</strong> - Archive a chat</li>
+										<li><strong>BLOCK</strong> - Block a user</li>
+										<li><strong>JID</strong> - Get a contact's JID</li>
+										<li><strong>MYPP</strong> - Change your profile picture</li>
+										<li><strong>PIN</strong> - Pin a chat</li>
+										<li><strong>READ</strong> - Mark a chat as read</li>
+									</ul>
+
+									<!-- More features and commands can be added based on the full bot's functionality -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="section3" class="mb-5 section-content">
+					<h2><i class="fas fa-headset me-2"></i>FXOP Support</h2>
+					<p>Need help? Our support team is here for you:</p>
+					<ul class="list-group">
+						<li class="list-group-item"><i class="fas fa-envelope me-2"></i>Email: danielfx0011@gmail.com</li>
+					</ul>
+					<div class="mt-3">
+						<button class="btn btn-custom" id="chatSupportBtn"><i class="fas fa-comments me-2" onclick="window.open(`https://t.me/fxopmdbot`)"></i>Chat with Support</button>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				document.querySelectorAll(".scroll-btn").forEach(button => {
+					button.addEventListener("click", function () {
+						const targetId = this.getAttribute("data-target");
+						const targetElement = document.getElementById(targetId);
+						targetElement.scrollIntoView({ behavior: "smooth" });
+						setTimeout(() => {
+							targetElement.classList.add("show");
+						}, 300);
+					});
+				});
+				document.getElementById("chatSupportBtn").addEventListener("click", function () {
+					alert("Connecting to a support agent. Please wait...");
+					window.open("https://t.me/fxopmdbot");
+				});
+			});
+		</script>
+	</body>
+</html>
