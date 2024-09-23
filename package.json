@@ -1,9 +1,9 @@
 {
-	"name": "fx-web",
+	"name": "kg-web",
 	"version": "1.0.0",
 	"type": "module",
 	"main": "server.js",
-	"author": "FXastro",
+	"author": "Kgtech",
 	"scripts": {
 		"start": "node server.js",
 		"dev": "nodemon server.js"
